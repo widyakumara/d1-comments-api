@@ -2,6 +2,7 @@
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 80,
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",

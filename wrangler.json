@@ -4,9 +4,7 @@
   "name": "d1-comments-api",
   "main": "src/index.ts",
   "compatibility_date": "2026-05-22",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "enabled": true
   }
