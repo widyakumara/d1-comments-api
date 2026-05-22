@@ -4,10 +4,15 @@ telemetry = false
 silent = true
 
 [install]
-minimumReleaseAge = 172800
+minimumReleaseAge = 1728000
 
 minimumReleaseAgeExcludes = [
   "@types/bun",
   "bun-types",
   "typescript",
+  "hono",
+  "wrangler",
+  "workerd",
+  "miniflare",
+  "ws",
 ]

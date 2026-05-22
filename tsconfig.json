@@ -1,5 +1,5 @@
 {
-  "include": ["**/*"],
+  "include": ["worker-configuration.d.ts", "**/*"],
   "exclude": [],
   "compilerOptions": {
     "types": ["bun"],
