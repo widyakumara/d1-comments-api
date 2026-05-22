@@ -1,3 +1,6 @@
 {
-  "recommendations": ["oven.bun-vscode"]
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "oven.bun-vscode"
+  ]
 }
