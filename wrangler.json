@@ -14,5 +14,8 @@
       "database_name": "d1-comments-api",
       "database_id": "84349364-c34f-495c-a6bc-c13c4c7589cb"
     }
-  ]
+  ],
+  "triggers": {
+    "crons": ["*/2 * * * *", "*/5 * * * *", "*/30 * * * *", "0 * * * *"]
+  }
 }

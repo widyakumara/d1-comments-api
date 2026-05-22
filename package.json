@@ -9,7 +9,7 @@
   "scripts": {
     "fmt": "prettier --write .",
     "lint": "eslint .",
-    "dev": "wrangler dev",
+    "dev": "wrangler dev --test-scheduled",
     "deploy": "wrangler deploy --minify",
     "types": "wrangler types",
     "db": "wrangler d1",
