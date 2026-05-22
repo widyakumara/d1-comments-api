@@ -15,9 +15,6 @@ export default {
   proseWrap: "preserve",
   endOfLine: "lf",
   singleAttributePerLine: false,
-  plugins: ["prettier-plugin-astro"],
-  overrides: [
-    { files: "*.json", options: { trailingComma: "none" } },
-    { files: "*.astro", options: { parser: "astro" } },
-  ],
+  plugins: [],
+  overrides: [{ files: "*.json", options: { trailingComma: "none" } }],
 };
