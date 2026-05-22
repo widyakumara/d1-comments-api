@@ -5,7 +5,7 @@ const app = new Hono<{ Bindings: Bindings }>();
 app.use("/api/*", cors());
 
 app.get("/", (c) => {
-  return c.text("Hello World!");
+  return c.text("hello world");
 });
 
 app.get("/api/posts/:slug/comments", async (ctx: Context) => {
@@ -43,4 +43,94 @@ app.post("/api/posts/:slug/comments", async (ctx) => {
   }
 });
 
-export default app;
+const cronHalf = async (env: Env) => {
+  const slug = "cron";
+  const author = "CronHalf";
+  const body = new Date().toUTCString();
+
+  const query =
+    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)";
+
+  const { results } = await env.DB_BINDING.prepare(query)
+    .bind(author, body, slug)
+    .run();
+
+  return results;
+};
+
+const cronHour = async (env: Env) => {
+  const slug = "cron";
+  const author = "cronHour";
+  const body = new Date().toUTCString();
+
+  const query =
+    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)";
+
+  const { results } = await env.DB_BINDING.prepare(query)
+    .bind(author, body, slug)
+    .run();
+
+  return results;
+};
+
+const cronTwo = async (env: Env) => {
+  const slug = "cron";
+  const author = "cronTwo";
+  const body = new Date().toUTCString();
+
+  const query =
+    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)";
+
+  const { results } = await env.DB_BINDING.prepare(query)
+    .bind(author, body, slug)
+    .run();
+
+  return results;
+};
+
+const cronFive = async (env: Env) => {
+  const slug = "cron";
+  const author = "cronFive";
+  const body = new Date().toUTCString();
+
+  const query =
+    "INSERT INTO comments (author, body, post_slug) VALUES (?, ?, ?)";
+
+  const { results } = await env.DB_BINDING.prepare(query)
+    .bind(author, body, slug)
+    .run();
+
+  return results;
+};
+
+const scheduled = async (
+  controller: ScheduledController,
+  env: Env,
+  ctx: ExecutionContext,
+) => {
+  // tests:
+  // http://localhost:8787/__scheduled?cron=*/2+*+*+*+*
+  // http://localhost:8787/__scheduled?cron=*/5+*+*+*+*
+  // http://localhost:8787/__scheduled?cron=*/30+*+*+*+*
+  // http://localhost:8787/__scheduled?cron=0+*+*+*+*
+
+  switch (controller.cron) {
+    case "*/2 * * * *":
+      ctx.waitUntil(cronTwo(env));
+      break;
+    case "*/5 * * * *":
+      ctx.waitUntil(cronFive(env));
+      break;
+    case "*/30 * * * *":
+      ctx.waitUntil(cronHalf(env));
+      break;
+    case "0 * * * *":
+      ctx.waitUntil(cronHour(env));
+      break;
+  }
+};
+
+export default {
+  fetch: app.fetch,
+  scheduled,
+};
