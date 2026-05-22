@@ -1,0 +1,13 @@
+{
+  "include": ["**/*"],
+  "exclude": [],
+  "compilerOptions": {
+    "types": ["bun"],
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
