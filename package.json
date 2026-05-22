@@ -12,7 +12,9 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify",
     "types": "wrangler types",
-    "db": "wrangler d1"
+    "db": "wrangler d1",
+    "db:exec": "wrangler d1 execute d1-comments-api --local",
+    "db:init": "bun db:exec --file schemas/schema.sql"
   },
   "dependencies": {
     "hono": "^4.12.21"
